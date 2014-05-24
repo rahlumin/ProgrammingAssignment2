@@ -65,13 +65,25 @@ cacheSolve <- function(x, ...) {
 # test our code 
 testIt<-function()
 {
+ 
+  print("Creating Matrix")
   mt<- rbind(c(1, -1/4), c(-1/4, 1))  # an invertible matrix 
   mtt<-makeCacheMatrix( mt )
+  
+  print("Asking to solve ")
+  
   imtt<-cacheSolve(x=mtt)
   mtt$printmatrix()
   mtt$printinv()
   imtt
-  mtt$get() %*% imtt
   
+  print ("multiplying ")
+  i<-mtt$get() %*% imtt
+  print(i)
+  
+  print("Asking to solve agian")
+  # try again
+  imtt<-cacheSolve(x=mtt)
+ imtt
   
 }
